@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)chrome-extension://mgijmajocgfcbeboacabfgobmjgjcoja/options.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Huoji&gt; Options.html</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+<!-- offline JS mine --><script type="text/javascript" src="js/forms.js"></script>
+</head>
+  <body>
+	<ul class="navbar">
+				<li><a href="popup.html">Apps</a></li>
+				<li><a href="options.html">Options</a></li>
+				<li><a href="manual.html">Manual</a></li>
+				<li><a href="references.html">References</a></li>
+	</ul>
+    <div id="content">
+      <div id="title">
+        <img src="火128.png" title="Huoji" alt="Huoji: Chinese Texts Analyser">
+        <div>Extension Options</div>
+      </div>
+      <form id="optform" name="optform" action="">
+        <div class="option_row">
+          <div class="option_name">Reader's Vocabulary Profile:</div>
+          <div class="option_value">
+            <div class="option_value_primary">
+			<small>Chinese characters by frequency... <br>
+				— from 1st to <input id="threshold1" value="500" type="text" maxlength="4" size="4">th are likely easy for me;<br>
+				— from this to <input id="threshold2" value="1000" type="text" maxlength="4" size="4">th sound unclear for me;<br>
+				— from this onward, are likely unknow to me.</small>
+            </div>
+          </div>
+        </div>
+        <div class="option_row">
+          <div class="option_name">Reading type:</div>
+          <div class="option_value">
+            <div class="option_value_primary">
+			<select id="readingtype" name="readingtype">
+				<option value="learn-em">Learner's focus (next to learn)</option>
+				<option value="blind-em">Illiterate's feeling (simulated)</option>
+			</select>
+            </div>
+          </div>
+        </div>
+        <div class="option_row">
+          <div class="option_name">Dataset:</div>
+          <div class="option_value">
+            <div class="option_value_primary">
+			<select id="dataset" name="dataset">
+				<option value="subtlex_(frequency)">simp:Subtlex_(frequency)</option>
+				<option value="dajun_(frequency)">simp:Dajun_(frequency)</option>
+				<option value="taiwan_(frequency)">trad:Taiwan_(frequency)</option>
+				<option value="france_(levels)">simp:France_(levels)</option>
+				<option value="hsk_(levels)">simp:HSK_(levels)</option>
+				<option value="ebcl_(levels)">simp:EBCL_(levels)</option>
+			</select><br />
+			<label><small> About 3000 characters each.</small></label>
+            </div>
+          </div>
+        </div>
+      <div class="option_row">
+          <div class="option_name">Accepted input:</div>
+          <div class="option_value">
+            <div class="option_value_primary">
+					<select id="hanzidb" name="hanzidb">
+						<option value="simp">Simplified Chinese</option>
+						<option value="trad">Traditional Chinese</option>
+					</select> 
+            </div>
+          </div>
+        </div>
+ 
+        <div class="buttons">
+			<button onclick="getVals();" id="save_button">Save</button>
+
+        </div>
+      </form>
+    </div>
+    <div class="footer">©<a href="http://fr.wikipedia.org/wiki/Special:EmailUser/Yug" style="color:#333;">Hugo Lopez</a> (<a href="http://www.inalco.fr" style="color:#333;">INALCO</a>) — 2012 — <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/"  style="color:#333;">CC-by-nc-sa <img alt="CC" src="CC.png" width="50"></a>
+
+    <script type="text/javascript">fillVals();</script>
+<!--
+          <button id="save_button">Save</button>
+          <button id="reset_button">Reset</button>
+    <script type="text/javascript" src="chrome-extension://mgijmajocgfcbeboacabfgobmjgjcoja/ga.js"></script>
+-->
+
+</body></html>

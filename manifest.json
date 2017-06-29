@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "Huoji Apps",
+  "version": "0.3.2",
+  "description": "Huoji (火机) enlighten Chinese characters according to their frequency rank. You instantly find the rare ones to study.",
+  "options_page": "options.html",
+  "app": {
+    "launch": {
+      "local_path": "options.html"
+    }
+  },
+  	"icons":{
+		"16":"huoji16.png",
+		"128":"huoji128.png"
+	}
+} /*
+
+v.0.3.0: Connexion with Google Form
+* popup.html: <text> fields migrated to <input> fields
+* popup.html: <input> fields names respecting Google form naming convention
+* form.js: upgraded accordingly into $("#id").val(localStorage.id) to fill <input value"">
+* <form action="url.of.my.google.spreadsheet"><input type="submit"></form>
+* WORKING AS EXPECTED.
+
+v.0.2.8: Upgrades:
+* CSS Alignment with audio-langua.eu
+* Add of the character lists.
+
+v.0.2.7: Upgrades: Chrome > new tab > Huoji: Dans options, les valeurs doivent être sauvegardées pour initialiser l'apps.
+* move from "extension" to "application"
+* Add manual page
+* Add references page
+* Add navbar
+* add of the EBCL list
+* style alignment with the European Benchmarking Chinese Language (EBCL) project http://ebcl.eu.com/
+*/

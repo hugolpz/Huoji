@@ -1,0 +1,301 @@
+/* Huoji functions*/
+/* EBCL: 
+#FFF Page bg 
+#D4D4D4 header-footer bg 
+#F3F3F3 page content bg 
+#EBEBEB page legend bg
+#CACACA border?
+#8A8A8A title txt, normal color
+#333  normal txt, dark
+#9D9C9C small txt, light
+*/
+body { 
+	background-color:#FFF; /*lavender: #BBCCDD; */
+	color:#000;
+	font-family:arial,sans-serif;
+	font-size:13px;
+	}
+/* Popup Input-output areas:
+ -------------------------*/
+#augmentedtext { 
+/*		background-color: #F0F0F0;
+border: solid 3px grey; */ 
+	word-break: break-all;
+	max-width: auto;
+	max-height: auto;
+	font-size:16px;
+	background-color:#F9F9FF;
+	font-family: monospace;
+	line-height: 160%;
+	padding: 5px;
+	border: 1px solid #EAFAFF;
+}
+#augmentedtext:hover { background-color:#EAFAFF;}
+textarea {
+	color: #666;
+	width: 99%;
+	height: 200px;
+	background: white;
+	left: 0;
+	top: 0px;
+	right: 0;
+	bottom: 0;
+	display: block;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	margin-top: 0px;
+	border-top: 1px solid #00AAEA;
+	border-left: 1px solid #00AAEA;
+	border-right: 2px solid #00AAEA;
+	border-bottom: 2px solid #00AAEA;
+	padding: 5px;
+}
+textarea:hover { background-color:#EAFAFF;}
+sign  { color: black; }
+sent  { color: green; }
+above { color: purple; }
+/* <style id="blind-like"> : injected by popup.html#CSS SWITCHER js */
+/* <style id="-learn">
+ -------------------------*/
+easy { color: black; }
+part { color: chocolate; }
+news { color: red; }
+div#logo { /*Not need ?*/
+  background-image: url(火64.png);
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+}
+/* Portlet
+ -------------------------*/
+.column { width: auto; float: none; padding-bottom: 100px; }
+.portlet { margin: 0 1em 1em 0; }
+.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
+.portlet-header .ui-icon { float: right; }
+.portlet-content { padding: 0.4em; }
+.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+.ui-sortable-placeholder * { visibility: hidden; }
+
+h3 {
+	color: #00AAEA; /*205090*/
+	border-top:4px solid #FFF;
+	font-size:120%; 
+	font-weight: bold;
+	text-align: left;
+	padding-left:10px;
+	margin-left:10px;
+	margin-top:3px;
+	margin-right:10px;
+	margin-bottom:3px;
+	background-color:#D4D4D4;
+}
+
+/* Legend
+ -------------------------*/
+.legend { 
+	background-color: #D5E2E8; 
+	text-align: left;
+	border-top-left-radius:0px;
+	border-top-right-radius:15px;
+	border-bottom-right-radius:15px;
+	border-bottom-left-radius:15px;
+	padding:5px;
+	margin:5px;
+	border: 1px solid #C0C0C0;
+}
+tr { 
+	font-size: 12px;
+	color: #333;
+}
+td {
+	width: short;
+	line-height:15px;
+}
+
+blue { 
+	color: #00AAEA;
+	padding-left:5px;
+}
+
+input {
+	margin-left: 6px;
+	margin-right: 11px;
+	padding-left: 4px;
+	border-left: 3px #00AAEA solid;
+	border-top: none;
+	border-bottom: none;
+	border-right: none;
+	color: #808080;
+	background-color: #D5E2E8;
+	width: 90%;
+}
+input:hover {
+	font-weight:bold;
+}
+
+td>li {
+	margin-left:5px;
+}
+
+/* Slider: all this CSS don´t work, replaced by Jquery action
+ -------------------------*/
+
+.ui-widget-header {
+	background:#00AAEA;
+}
+element.style {
+	color:#00AAEA;
+}
+amount {
+	color:#00AAEA;
+}
+/* Buttons, selectlist, options & links:
+ -------------------------*/
+button {
+	font-size: 100%;
+}
+/* button {
+	border: 1px solid white;
+	border-radius:8px;
+	background-image: -webkit-linear-gradient(bottom, #FFF 0%, #A8A8A8 11%, #FFF 69%); http://gradients.glrzad.com/
+	color: #333;
+} */
+.input {
+	box-align: center;
+	background-color: #00AAEA;
+	border: 1px solid #00AAEA;
+	border-radius: 8px;
+	color:#FFF;
+	font-family: Arial;
+	font-size: 13px;
+	font-weight: bold;
+	height: 19px;
+	padding-left: 13px;
+	padding-right: 13px;
+	padding-top:2px;
+	padding-bottom:2px;
+	margin:3px;
+	padding-top: 1px;
+	position: static;
+	text-align: center;
+}
+.input:hover {
+	background-color: #FFFFFF;
+	color:#00AAEA;
+}
+
+select {
+	background-color: #FFF;
+	border-radius:5px;
+	float:left;
+	width: auto;
+	border: 1px solid #00AAEA;
+	outline:none;
+}
+select:hover {
+	background-color: #33CCFF;
+}
+option {
+	color: #00AAEA;
+	font-family: Arial;
+	font-size: 13px;
+	font-weight: normal;
+	height: auto;
+	width: auto;
+}
+
+a { color: #11c;
+	text-decoration:none;
+	}
+a:hover { 	
+	color: #5D60C1; /*EBCL color*/
+	text-decoration:underline;
+	}
+a:visited {
+	color: #5D60C1;
+	text-decoration: none;
+}
+
+/* Optionpages´s content:
+ -------------------------*/
+def { 
+	color: #9999EE; 
+	font-weight: bold; 
+}
+#title { color:#333; /*Not existing !*/
+	font-size:20px;
+	margin:10px 0 0;
+	text-align:center
+	}
+#content { 
+	background-color:#fff;
+	border: 4px solid #abd;
+	margin:10px auto 0;
+	padding:12px;
+	width:600px;
+	border-radius:12px
+	}
+.option_row { clear:left;
+	padding:25px 10px 0
+	}
+.option_name { float:left;
+	font-weight:bold;
+	margin-top:2px;
+	width:160px
+	}
+.option_value { float:left
+	}
+.option_value_secondary { margin:5px 0 20px 35px;
+	}
+.text_disabled { color:#999;
+	}
+.buttons { clear:left; /*Not existing !*/
+	padding:20px 10px 10px
+	}
+#save_status { background-color:#fea;
+	font-weight:bold;
+	margin-left:10px;
+	opacity:0;
+	padding:3px
+	}
+.footer { margin-top:10px;
+	text-align:center
+	}
+
+/* Optionpages´s navbar:
+ -------------------------*/
+.navbar {
+	/* background: url(navbar.jpg) no-repeat; */
+	border-radius: 10px;
+	border-bottom-left-radius: 0px 0px; /*x y*/
+	border-bottom-right-radius: 0px 0px; /*x y*/
+	border: 1.5px solid #abd;
+	background-image: -webkit-linear-gradient(bottom, #FFF 0%, #E4E4E4 11%, #FFF 69%); /*http://gradients.glrzad.com/  */ 
+	border-bottom:0px;	
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	bottom: -14px;
+	z-index: 6;
+	height: 30px;
+	width: 35%;
+	margin-bottom: 0px;
+}
+.navbar > li { background-attachment: scroll;
+	list-style: none;
+	float: left;
+	font-size: 12px;
+	font-family: Tahoma, Geneva, sans-serif;
+	height: 48px;
+	width:50px;
+	line-height: 32px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 0px;
+	position: relative; /*no effect*/
+	text-align: center;
+	z-index: 35; /*no effect*/
+}

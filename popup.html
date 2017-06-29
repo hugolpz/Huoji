@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Huoji> Popup.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- ################################
+     ##       CALL:JQuery, CSS     ##
+     ################################ -->
+<!-- CSS 1: offline --><link type="text/css" href="styles.css" rel="stylesheet"/>
+<!-- offline CSS jquery-ui --><link type="text/css" href="development-bundle/themes/custom-theme/jquery-ui-1.8.21.custom.css" rel="stylesheet" />	
+<!-- offline jquery-1.7.1 --><script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<!-- online jquery-1.7.1 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>-->
+<!-- offline jquery-ui --><script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+<!-- offline replaceText --><script type="text/javascript" src="js/jquery.ba-replacetext.js"></script>
+<!-- online replaceText<script src="http://github.com/cowboy/jquery-replacetext/raw/master/jquery.ba-replacetext.js" type="text/javascript"></script> -->
+<!-- offline JS mine --><script type="text/javascript" src="js/forms.js"></script>
+<!-- offline JS mine --><script type="text/javascript" src="popup.js"></script>
+<!-- offline JS mine --><script type="text/javascript" src="js/CSSswitch.js"></script>
+<script id="var">
+//   ################################
+//   ##    MySCRIPTs:Accordion     ##
+localStorage.dataset = "hsk_(levels)";
+</script>""
+
+<script id="Slider">
+// ################################
+// ##      SLIDER (SCRIPT)       ##
+// ################################
+	if (localStorage.dataset == "taiwan_(frequency)" || localStorage.dataset == "dajun_(frequency)" || localStorage.dataset == "subtlex_(frequency)"){
+		if (localStorage.threshold2 < 7){
+			localStorage.threshold1 = "500";
+			localStorage.threshold2 = "1000";
+			}
+		$(function() {
+			$( "#slider-range" ).slider({
+				range: true,
+				min: 0,
+				max: 3000,
+				step: 1,
+				values: [ Number(localStorage.threshold1), Number(localStorage.threshold2) ],
+				slide: function( event, ui ) {
+					// inputfield after click
+					$("#amount").val("Frequency rank: 字 "+ui.values[0]+"th ⇒ 字 " + ui.values[1]+"th");
+					localStorage.threshold1 = ui.values[0];
+					localStorage.threshold2 = ui.values[1];
+				}
+			}); 
+			// input field onload
+			$( "#amount" ).val( "字 " + $( "#slider-range" ).slider( "values",0)+"th ⇒ 字 "+$("#slider-range").slider("values",1)+"th" ); 
+		});
+		}
+	else {
+		if (localStorage.threshold1 > 6){
+			localStorage.threshold1 = "2";
+			localStorage.threshold2 = "3";
+			}
+		$(function() {
+			$( "#slider-range" ).slider({
+				range: true,
+				min: 0,
+				max: 6,
+				step: 1,
+				values: [ Number(localStorage.threshold1), Number(localStorage.threshold2) ],
+				slide: function( event, ui ) {
+					// inputfield after click
+					$("#amount").val(localStorage.dataset+": lev. "+ui.values[0]+" easy , ⇒ lev. " + ui.values[1]+" partially known");
+					localStorage.threshold1 = ui.values[0];
+					localStorage.threshold2 = ui.values[1];
+				}
+			}); 
+			// input field onload
+			$( "#amount" ).val( "Lev. " + $("#slider-range").slider( "values",0)+" ⇒ Lev. "+$("#slider-range").slider("values",1)); 
+		});
+		}
+//SCRIPT?
+//	var str = $("textarea").mouseover(this).text();
+//	$("span:last").html(str);
+</script>
+<style id="readingtypeCSS"></style>
+</head>
+
+<body style="color:#909090;">
+<script id="Portl">
+// 
+//   ################################
+//   ##    MySCRIPTs:Accordion     ##
+//   ################################
+	$(function() {
+		$( ".column" ).sortable({
+			connectWith: ".column"
+		});
+
+		$( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+			.find( ".portlet-header" )
+				.addClass( "ui-widget-header ui-corner-all" )
+				.prepend( "<span class='ui-icon ui-icon-minusthick'></span>")
+				.end()
+			.find( ".portlet-content" );
+
+		$( ".portlet-header .ui-icon" ).click(function() {
+			$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+			$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+		});
+
+		$( ".column" ).disableSelection();
+	});
+
+</script>
+<script id="Accord">
+// http://jqueryui.com/demos/draggable/#sortable & http://jqueryui.com/demos/accordion/#collapsible
+$(function() {
+	$( "#accordion" ).accordion({
+//		fillSpace: true,
+		collapsible: true
+	});
+});
+$(function() {
+	$( "#accordion2" ).accordion({
+//		fillSpace: true,
+		collapsible: true
+	});
+});
+</script><table>
+<tbody><tr valign="top"><td width="80%">
+<!-- ################################
+//   ##          ANALYSER          ##
+//   ################################ -->
+
+	<div id="accordion">
+		<h3><a href="#">Augmented text:&nbsp;<text id="readingtypeENttl">reading mode</text></a></h3>
+		<div>
+			<above>
+			<div id="augmentedtext" lang="zh">Waiting request.</div>
+			</above>
+		</div>
+	</div>&nbsp;&nbsp;——&nbsp;Legend: <easy>■知道</easy><part> ■不清</part><news> ■不知</news>
+	<div id="accordion2">
+		<h3><a href="#">Input box:</a></h3>
+		<div><textarea id="entry_2" rows="12" cols="110" lang="zh">
+		中华人民共和国，简称中国，是位于亚洲东部、太平洋西岸的一个社会主义国家，首都为北京。其陆地疆域与周边14个国家接壤，陆地及湖泊的总面积约960万平方公里，是全世界陆地面积第二大的国家，总面积第三或第四大的国家。其人口超过13亿，约占全球人口的五分之一，是世界上人口最多的国家
+		</textarea>
+		</div>
+	</div>
+<!--	
+
+	
+ b) Text 1. (~580 caractères)
+http://zh.wikipedia.org/w/index.php?title=尼尔·阿姆斯壮&oldid=22601091
+维基百科，自由的百科全书
+尼尔·阿姆斯壮。
+尼尔·奥尔登·阿姆斯壮（英语：Neil Alden Armstrong，港另有译作杭思朗[1]，1930年8月5日－2012年8月25日）是美国太空人、试飞员、海军飞行员以及大学教授。在美国国家航空暨太空总署服役时，阿姆斯壮于1969年7月21日时成为了第一个踏上月球的太空人，也是第一个在地球外星体上留下脚印的人类成员，而其搭档伯兹·艾德林也成为了第二位及登上月球后安全返回及踏上地球的第一人，两人在月球表面停留了两个半小时。阿姆斯壮的首次太空任务是双子星座8号，在这次任务中，他和大卫·斯科特执行了历史上第一次轨道对接。 1969年7月，阿姆斯壮在执行他的第二次也是最后一次太空任务阿波罗11号时，迈出了「人类的一大步」。
+成为太空人之前，阿姆斯壮曾是美国海军的飞行员，参与过韩战。他后来在国家航空咨询委员会（National Advisory Committee for Aeronautics，NACA）担任试飞员，飞行时间超过九百小时。作为试飞员，阿姆斯壮飞过F-100「超级佩刀」A型和C型、F-101「巫毒」以及F-104「星」式战斗机，他飞过的其他机型包括X- 1B型、X-5、X-15、F-105「雷公」、F-106「三角标枪」、B-47「同温层喷气」、以及KC-135「同温层油船」。
+距离阿波罗11号登月点五十公里的阿姆斯壮环形山就是以阿姆斯壮的名字命名的。
+
+
+ c) Text 2. (~510 caractères)
+http://zh.wikinews.org/zh-hans/香港十三年来首次十号飓风信号
+维基新闻，自由的新闻源【2012年7月24日讯】 
+香港十三年来首次十号飓风信号
+香港继1999年台风约克吹袭香港引至十号飓风信号之后，于昨晚发出十号飓风信号，为十三年来首次。
+是次吹袭香港的热带气旋名为“韦森特”，香港天文台一度升格为强台风，最近香港时为处于香港西南面约一百公里，为有记录以来，与香港距离最远的十号飓风信号。天文台是于昨晚五时四十分发出八号烈风或暴风信号，晚上十一时廿分发出九号烈风或暴风增强信号，再于凌晨十二时四十五分改发十号飓风信号。风暴期间，天文台指定八个用来决定是否改发三号及八号热带气旋的测风站之中，全部八个都录得强风，而当中更有四个录得烈风或以上风力。
+此外，天文台在十号飓风信号生效期间，曾同时发出其他警告，包括黄色暴雨警告、山泥倾泻警告、雷暴警告及新界北部水浸特别报告，高于海平面593米的昂坪录得达飓风的200公里每小时的十分钟平均风速，但其后风速计损毁。另外，东铁线大埔墟站附近有树木倒塌，东铁线全线服务暂停，有八抽载客列车受影响，当中三抽更断电，车厢内漆黑一片。
+
+
+ d) Text 3. (~ 470 caractères)
+http://zh.wikinews.org/zh-hans/美国国防部推出对台售武方案
+维基新闻，自由的新闻源 【2008年10月4日讯】 
+美国国防部推出对台售武方案。
+美国国防部订出对台湾售武计划方案，包括先进的拦截导弹及阿帕奇攻击直升机，总值65亿美元。美国国防部国防安全及合作局指，有关建议旨在改善台湾的防卫能力，不会对现时区内的军事平冲构成影响。
+台湾的总统府发言人王郁琦表示，欢迎美国同意军售，这象征过去8年来台美之间的纷扰结束，也代表台美关系的互信逐渐提升。
+美国政府已经将出售方案知会国会，假如30日内没有反对便会生效。有关方案将向台湾出售6种军备武器，包括30架阿柏奇攻击直升机、330枚爱国者三型防空导弹、182枚反坦克飞弹、32枚潜射鱼叉飞弹、F16和F5战机补给零件，以及E-2T预警机的升级零件。
+其中爱国者三型防空导弹，潜射鱼叉飞弹，及阿柏奇攻击直升机，以及阿柏奇攻击直升机所配备的地狱火飞弹及刺针飞弹等五项武器是美国首次计划卖给台湾。而最具争议性的潜艇第一阶段设计费，则没有包括在军售方案内。
+有关方案提交国会，若30日内没有反对便会生效。但预料方案会受到中共施压，有分析认为这可能成为方案能否通过的一个障碍。
+
+ e) Texte 4. (~450 caractères)
+http://zh.wikinews.org/zh-hans/2010年游戏之星玩家票选_三强鼎立天下_业者势力均分
+维基新闻，自由的新闻源 【2011年2月11日讯】
+
+2010年游戏之星玩家票选 三强鼎立天下 业者势力均分。 
+2010年游戏之星玩家票选颁奖典礼，优胜厂商代表获主办单位表扬。
+展现台湾游戏产业成果，象征台湾游戏产业奥斯卡的“2010年游戏之星选拔赛”玩家票选活动，最终尘埃落定。  由于本次征选配合即将到来的“台北国际电玩展”，采网路玩家独立票选的方式进行，因此玩家手中的关键票，将决定最后获奖的作品落谁家。
+国内自制游戏组，以大宇资讯的轩辕剑系列与大富翁系列，在单机游戏、手机游戏项目分获三奖，成为最大赢家。线上游戏与网页游戏项目，则形成列强鼎立之局势，除了中华网龙在最佳线上游戏项目，以“天子传奇Online”继续连庄，首度设立的网页游戏项目，则是由老牌商用游戏开发商鈊象电子，以“新明星三缺一”夺得金奖荣衔。
+另外在国外代理游戏组，红心辣椒、屏讯科技，分别在最佳连线游戏与最佳手机游戏两项目中，一举囊括金、银、铜三奖项，一展惊人表现；台湾万代南梦宫伙伴、台湾光荣特库摩，也在最佳游乐器游戏、最佳单机游戏中，各有斩获；游戏新干线、香港云起游戏代理，也各有两个奖项的入帐。
+
+	
+	 g) Text 5. (457 caractères)
+http://www.facebook.com/NikittaChau/posts/10150951388171861
+有一个富翁得了绝症，他觉得自己将不久人世，心中很难过，还好他去请教一位隐居的名医。 <br />
+名医把脉诊断后，说： " 这病除了一个办法外无药可医，我这里有三帖药，你依续照做，〝一帖做完再打开另一帖〞。<br />
+富翁回到家， 打开第一帖： " 请你到一处沙滩，躺下30 分钟, 连续21 天" 富翁半信半疑还是照做了，1 天" 富翁半信半疑还是照做了，
+结果每次一躺就躺了2 个小时，因为虽然他很有钱，却从来没有这么舒服过，听风听海和海鸥鸣叫。<br />
+第22 天他打开第二帖： " 请在沙滩上找5 只鱼或虾或贝，将它们丢回海里，连续21 天" 。
+富翁还是满心怀疑，还是照做了；结果每次将小鱼虾丢回海里时，他却莫名地感动。<br />
+第43 天他打开第三帖： " 请随便找一根树枝，在沙滩上写下所有不满和怨恨的事" 。<br />
+每当他写完没多久，海浪涨潮时就把那些字冲掉了，他哭了。<br />
+回家后他觉得全身舒畅，很放松，甚至不怕死了。<br />
+原来人因为学不会三件事，所以不快乐：<br />
+一. 休息<br />
+二. 付出<br />
+三. 放下<br />
+本周名言： " 相较于忍，我比较喜欢恕，因为忍字心上一把刀，恕字却是如意在心头" <br />
+( 子贡问曰，有一言而可以终身行之者乎。 子曰，其恕乎。 - - - -> 推己及人谓之恕。 ) 
+
+
+ h) Texte 6. (453 caractères)
+【一道终身受用的测试题】。<br />
+你开着一辆车。<br />
+在一个暴风雨的晚上。<br />
+有三个人正在焦急的等公共汽车。<br />
+一个是快要临死的老人，他需要马上去医院。<br />
+一个是医生，他曾救过你的命，你做梦都想报答他。<br />
+还有一个女人/男人，她/他是你做梦都想嫁/娶的人，也许错过就没有了。<br />
+但你的车只能在坐下一个人，你会如何选择？<br />
+我不知道这是不是一个对你性格的测试, 因为每一个回答都有他自己的原因。<br />
+老人快要死了，你首先应该先救他。<br />
+你也想​​​​让那个医生上车，因为他救过你，这是个好机会报答他。<br />
+还有就是你的梦中情人。错过了这个机会。你可能永远不能遇到一个让你这么心动的人了。<br />
+在200个应征者中，只有一个人被雇佣了，他并没有解释他的理由，他只是说了以下的话：'给医生车钥匙，让他带着老人去医院，而我则留下来陪我的梦中情人一起等公车！'<br />
+每个人我认识的人都认为以上的回答是最好的，但没有一个人（包括我在内）一开始就想到。<br />
+小哲理：
+是否是因为我们从未想过要放弃我们手中已经拥有的优势（车钥匙）？<br />
+有时，如果我们能放弃一些我们的固执，狭隘，和一些优势的话，我们可能会得到更多。
+
+ i) Texte 7. (488 caractères)
+【皮鞋的来历】。<br />
+很久很久以前，人类都还赤着双脚走路。<br />
+有一位国王到某个偏远的乡间旅行，因为路面崎岖不平，有很多碎石头，刺得他的脚又痛又麻。回到王宫后，他下了一道命令，要将国内的所有道路都铺上一层牛皮。<br />
+他认为这样做，不只是为自己，还可造福他的人民，让大家走路时不再受刺痛之苦。<br />
+但即使杀尽国内所有的牛，也筹措不到足够的皮革，而所花费的金钱、动用的人力，更不知凡几。虽然根本做不到，甚至还相当愚蠢，但因为是国王的命令，大家也只能摇头叹息。<br />
+一位聪明的仆人大胆向国王提出建言：<br />
+「国王啊！为什么您要劳师动众，牺牲那么多头牛，花费那么多金钱呢？您何不只用两小片牛皮包住您的脚呢？」<br />
+国王听了很惊讶，但也当下领悟，于是立刻收回成命，改采这个建议。据说，这就是「皮鞋」的由来。<br />
+小哲理：<br />
+想改变世界，很难；要改变自己，则较为容易。与其改变全世界，不如先改变自己--「将自己的双脚包起来」。改变自己的某些观念和作法，以抵御外来的侵袭。当自己改变后，眼中的世界自然也就跟着改变了。如果你希望看到世界改变，那么第一个必须改变的就是自己。<br />
+「心若改变，态度就会改变；态度改变，习惯就改变；习惯改变，人生就会改变。」
+
+
+ j) Text 8. (363 caractères)
+http://www.facebook.com/photo.php?fbid=430773140302169
+	很多人很喜欢看事情的表面，所以往往学不到精髓。看到贾伯斯、比尔盖兹、马克左克伯都休学，就马上拿来和台湾的大学生做比较，其实这非常的不对等。<br />
+这样说好了，很少人知道贾伯斯休学后，还继续留下来旁听喜爱的课程。这很少人知道？<br />
+马克在毕业前，就把脸书原型写出来了，并且牺牲掉学校的所有活动。简单来说此时他已经具备谋生的技能，这很少人着墨。<br />
+比尔盖兹高中就是软体天才，他为了要进一间公司工作，跑去了该公司停车场，翻出公司程式报表的错误，马上回去帮该公司写出更流畅的程式。这也很少人谈。<br />
+小郭：我知道台湾毕业生的薪水很可悲，但是，拿来和这三位前后期PC时代的王者相比，逻辑就不通了。别人的努力、别人的技能、别人的用功，你没有看到，你只看到新闻提的他们休学了，这就是精髓没学到，只学到了皮毛！小郭的朋友，希望你我是学到真功夫的人。
+	
+	
+	
+	
+	自從一對不知從那條老屌出來的男女 － 一位slut和另一位son of the bitch正式把我這位脾氣是颱風級的老娘惹火到森林山火級後，我的嘴巴就非常髒，人也越來越辣。曾幾何時，我也希望做好人、也希望溫柔一點、希望對人好一點...但是結果怎樣？你們殺了我 － 苟延殘存了幾個月，Angela已經在2012年8月底死了，跟著她老媽一起死了。
+
+三月時，Alan Wai你問我為什麼我好像什麼都會。很抱歉那時候我給你的回答可能讓你摸不著頭腦。但我相信我的態度絕對比Lisbeth Salander好多了 － 至少我告訴你事實，而不像她一樣摔門衝出去抽煙。
+Lai Ming，的確現在的我如你所說，我不會像凱麗那樣成熟。從9歲開始當outsider，12歲開始我一直push自己要自己“成熟一點”，換來卻是把某個自己留在9歲的時空。我是需要成長，而不是成熟。更何況，我已經有夠討厭自己，不需要再加上“不成熟”去壓榨自己。
+記得某人說我吃不了虧。我可以非常肯定的回答你：我什麼都會、新技術快速建立能力就是從我多年來打的白工、吃的虧獲得。舉手之勞的吃虧沒所謂，但是我死掉的老娘生我不是要送給你們勞役給你們吃死 － 比用過的安全套還不堪！
+以後別問我為什麼我好像什麼都會。我一點都不想什麼都會。
+	-->
+
+		</td>
+<!-- ################################
+	  ##     HTML: RIGHT column     ##
+	  ################################ -->
+	<td align="right" width="20%" valign="top">
+<!-- ################################
+	  ##          SYMBOLOGY         ##
+	  ################################ -->
+		<div class="legend">
+			<div class="tdtitle"><h3>Symbology:</h3>
+			</div>
+			<div style="font:10px verdana;">
+				<div class="option_value" onclick="CSSswitch();CSSupdate();">
+					<div id="logo" width="64px" height="64px" border="0"></div><center>Click me.</center>
+				</div>
+				<div class="option_value">
+					<hr>
+					<easy>  ■:easy for me</easy><br />
+					<part>  ■:unclear if≥</part><text id="thresholdoneLG">thresold 1</text>th<br>
+					<news>  ■:unknow, if≥</news><text id="thresholdtwoLG">thresold 2</text>th<br />
+					<sign>(■:alphanumerics)</sign><br />
+					<above>(■:>3000 or not in dataset)</above><br />
+					<hr style="margin-top:0px;">
+				</div>
+			</div><br clear="all" />
+<!-- ################################
+	  ##     SLIDER (HTML UI)       ##
+	  ################################ -->
+			<div class="tdtitle" id="bg bug"><h3>Thresolds/Level setting:</h3>
+			</div>
+			<div>
+				<text style="font-size:11px;">Characters I partially know :</text>
+					<input type="text" id="amount" style="border:0; color:orange; font-weight:bold; font-size:9px;" size="32"/>
+					<div style="margin:2px;" id="slider-range"></div><!-- -->
+			</div>
+		</div>
+
+<!-- #################################
+	  ##				SETTINGS				##
+	  ################################# -->
+		<table class="legend">
+		<tr><td colspan="2" class="tdtitle"><h3>Database & mode settings:</h3></td></tr>
+		<form id="optform" name="optform">
+		<tr><td><blue>Dataset:<blue></td>
+		<td>
+		<select id="dataset" name="entry.test.single" >
+				<option value="subtlex_(frequency)" style="background-color:#BEEE83;">simp:Subtlex_(frequency)</option>
+				<option value="dajun_(frequency)" style="background-color:#BEEE83;">simp:Dajun_(frequency)</option>
+				<option value="taiwan_(frequency)" style="background-color:#BEEE83;">trad:Taiwan_(frequency)</option>
+				<option value="france_(levels)">simp:France_(levels)</option>
+				<option value="hsk_(levels)" style="background-color:#BEEE83;">simp:HSK_(levels)</option>
+				<option value="ebcl_(levels)">simp:EBCL_(levels)</option>
+		</select></td></tr>			
+		<tr><td><blue>Mode:</blue></td>
+		<td><select id="readingtype" name="readingtype">
+				<option value="learn-em">Learner's focus</option>
+				<option value="blind-em">Illiterate's feeling</option>
+			</select></td></tr>
+<!--	<br />Hanzi Setting:
+		<select id="hanzidb" name="hanzidb">
+			<option value="simp">Simplified</option>
+			<option value="trad">Traditional</option>
+		</select> -->	
+		</form>
+		<tr><td colspan="2">
+			<p>
+			<button onclick="getVals();">1.Save settings</button>
+			<button onclick="clickPrint();CSSupdate();">2.Update</button>
+			<button onclick="CSSswitch();CSSupdate();fillVals();">3.Switcher</button>
+			<button class="input" type="submit" id="other">Analyse text</button>
+<!--opt	<p><input type="submit" onclick="getVals();" value="2.Submit"></p> -->
+			</p>
+		</td></tr>
+	
+		</table>
+		<table class="legend">	
+		<form action="https://docs.google.com/spreadsheet/formResponse?formkey=dFNRem44aWJULV8xODhxT1ZGd3N4WWc6MQ&amp;theme=0AX42CRMsmRFbUy1kYWJkMzE2Zi1jYTRhLTRkMTgtYjI1OS1iYjQ3YTY2NDdlMmQ&amp;ifq" method="POST">
+	
+	
+		<tr><td colspan="2" class="tdtitle"><h3>Setting summary:</h3></td></tr>
+		<tr><td><blue>Mode:</blue></td><td><input id="textFull" name="entry.1.single" value="" type="hidden"><input id="readingtypeEN" name="entry.2.single" value="" readonly="readonly"><text id="readingtypeCod"></text></td></tr>
+		<tr><td><blue>Dataset:</blue></td><td><input id="datasetEN" name="entry.3.single" value="" readonly="readonly"></td></tr>
+		<tr><td><blue>For:</blue></td><td><input id="hanzidbEN" name="entry.4.single" value="" readonly="readonly"><br /></td></tr>
+		<tr><td><blue>Threshold1:</blue></td><td><input id="thresholdone" name="entry.5.single" value="" readonly="readonly"></td></tr>
+		<tr><td><blue>Threshold2:</blue></td><td><input id="thresholdtwo" name="entry.6.single" value="" readonly="readonly"></td></tr>
+<!-- #################################
+	  ##				STATISTICS-1		##
+	  ################################# -->
+		<tr><td colspan="2" class="tdtitle"><h3>Results:</h3></td></tr>
+		<tr><td><blue>Coverage:</blue></td><td><input id="coverage" name="entry.7.single" value="" readonly="readonly"></td></tr>
+		<tr><td><li>C. easy:</td><td><input id="coverageEasy" name="entry.8.single" value="" readonly="readonly"></td></tr>
+		<tr><td><blue>Characters:</blue></td><td><input id="ziCounter" name="entry.9.single" value="" readonly="readonly"></td></tr>
+		<tr><td><li>Easy:</td><td><input id="easyCounter" name="entry.10.single" value="" readonly="readonly"></td></tr>
+		<tr><td><li>Partial:</td><td><input id="partCounter" name="entry.11.single" value="" readonly="readonly"></td></tr>
+		<tr><td><li>Unknow:</td><td><input id="newsCounter" name="entry.12.single" value="" readonly="readonly"></td></tr>
+		<tr><td><blue>Sentences:</blue></td><td><input id="sentCounter" name="entry.13.single" value="" readonly="readonly"></td></tr>
+		<tr><td><li>字/sent.:</td><td><input id="ziBySentCounter" name="entry.17.single" value="" readonly="readonly"></td></tr>
+		<tr><td>><a href="manual.html">Manual?</a></td>
+					 <td><input class="input" type="submit" name="submit" value="Submit results"></td></tr>
+	<form>
+	</tbody></table>
+</td></tr></tbody></table>
+</body>
+</html>

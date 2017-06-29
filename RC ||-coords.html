@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head><meta chartset="utf-8">
+  <script src="http://d3js.org/d3.v2.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://syntagmatic.github.com/parallel-coordinates/d3.parcoords.css">
+  <script src="http://syntagmatic.github.com/parallel-coordinates/d3.parcoords.js"></script>
+</head>
+<style>
+body {
+	font-size: 14px;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	margin: 50px auto 20px;
+	width: 720px;
+	background: #fcfcfc;
+	line-height: 1.45em;
+}
+a {
+	color: #555;
+}
+a:hover {
+	color: #000;
+}
+ul {
+	margin: 0 20px;
+	padding: 0;
+}
+.dark {
+	background: #222;
+}
+#example,
+#example-axes,
+#example1,
+#example2,
+#example3 {
+	height: 200px;
+	margin: 12px 0;
+}
+p {
+	width: 560px;
+}
+pre, blockquote {
+	color: #444;
+	font-family: Ubuntu Mono, Monaco, monospace;
+	padding: 4px 8px;
+	background: #f2f2f2;
+	border: 1px solid #ccc;
+}
+h1 small {
+	font-weight: normal;
+	font-size: 0.5em;
+}
+h3 {
+	margin-top: 40px;
+}
+.float {
+	float: left;
+}
+.centered {
+	text-align: center;
+}
+td { border: 1px solid #C0C0C0; }
+.tr { background-color: #D0D0D0; }
+.calculed { background-color: #D0FFD0 ; }
+</style>
+<body>
+<h4>Quelques Chiffres</h4>
+L'expérience finale représente:
+<ul>
+<li>8 textes
+<li>6 niveaux de lecture
+<li>48 tests
+<li>3000 caractères
+<li>4 jours de travail
+<li>500 000 opérations / calculs
+<li>288 valeurs récoltées.
+</ul>
+<h4>Résultats collectés:</h4>
+<div id="exemple0" class="parcoords" style="width:800px;height:400px"></div>
+
+<h4>Comparer les données:</h4>
+<table>
+<tr><td><div id="example1" class="parcoords" style="width:400px;height:200px"></div></td><td><div id="exemple1" class="parcoords" style="width:400px;height:200px"></td></tr>
+<tr><td><div id="example2" class="parcoords" style="width:400px;height:200px"></div></td><td><div id="exemple2" class="parcoords" style="width:400px;height:200px"></td></tr>
+<tr><td><div id="example3" class="parcoords" style="width:400px;height:200px"></div></td><td><div id="exemple3" class="parcoords" style="width:400px;height:200px"></td></tr>
+<tr><td><div id="example4" class="parcoords" style="width:400px;height:200px"></div></td><td><div id="exemple4" class="parcoords" style="width:400px;height:200px"></td></tr>
+</table>
+
+<div>
+	<div>
+	<h4>Résultats récoltés</h4>
+	<table>
+	<tr class="tr"><td>字/phrase</td><td>Texte</td><td>Lexique</td><td>Couverture</td><td>Cadre</td><td>Snow</td></tr>
+	<tr><td>27.4</td><td>1</td><td>62</td><td>24</td><td>0</td><td>0</td></tr>
+	<tr><td>27.4</td><td>1</td><td>356</td><td>58.7</td><td>1</td><td>0</td></tr>
+	<tr><td>27.4</td><td>1</td><td>717</td><td>84.1</td><td>3</td><td>2</td></tr>
+	<tr><td>27.4</td><td>1</td><td>1111</td><td>91.9</td><td>4</td><td>3</td></tr>
+	<tr><td>27.4</td><td>1</td><td>1668</td><td>97.4</td><td>5</td><td>4</td></tr>
+	<tr><td>27.4</td><td>1</td><td>3000</td><td>100</td><td>5</td><td>4</td></tr>
+	<tr><td>54.0</td><td>2</td><td>62</td><td>14</td><td>0</td><td>0</td></tr>
+	<tr><td>54.0</td><td>2</td><td>356</td><td>51.1</td><td>0</td><td>0</td></tr>
+	<tr><td>54.0</td><td>2</td><td>717</td><td>78.3</td><td>2</td><td>2</td></tr>
+	<tr><td>54.0</td><td>2</td><td>1111</td><td>87</td><td>3</td><td>2</td></tr>
+	<tr><td>54.0</td><td>2</td><td>1668</td><td>92.9</td><td>4</td><td>3</td></tr>
+	<tr><td>54.0</td><td>2</td><td>3000</td><td>100</td><td>5</td><td>3</td></tr>
+	<tr><td>38.6</td><td>3</td><td>62</td><td>17.4</td><td>0</td><td>0</td></tr>
+	<tr><td>38.6</td><td>3</td><td>356</td><td>49.5</td><td>1</td><td>0</td></tr>
+	<tr><td>38.6</td><td>3</td><td>717</td><td>73.3</td><td>3</td><td>2</td></tr>
+	<tr><td>38.6</td><td>3</td><td>1111</td><td>87.3</td><td>3</td><td>3</td></tr>
+	<tr><td>38.6</td><td>3</td><td>1668</td><td>94.3</td><td>5</td><td>3</td></tr>
+	<tr><td>38.6</td><td>3</td><td>3000</td><td>100</td><td>5</td><td>3</td></tr>
+	<tr><td>42.9</td><td>4</td><td>62</td><td>10.6</td><td>0</td><td>0</td></tr>
+	<tr><td>42.9</td><td>4</td><td>356</td><td>43.5</td><td>0</td><td>0</td></tr>
+	<tr><td>42.9</td><td>4</td><td>717</td><td>73.1</td><td>1</td><td>1</td></tr>
+	<tr><td>42.9</td><td>4</td><td>1111</td><td>88.1</td><td>3</td><td>2</td></tr>
+	<tr><td>42.9</td><td>4</td><td>1668</td><td>94</td><td>3</td><td>3</td></tr>
+	<tr><td>42.9</td><td>4</td><td>3000</td><td>100</td><td>4</td><td>3</td></tr>
+	<tr><td>32.1</td><td>5</td><td>62</td><td>31.9</td><td>0</td><td>0</td></tr>
+	<tr><td>32.1</td><td>5</td><td>356</td><td>69.1</td><td>2</td><td>2</td></tr>
+	<tr><td>32.1</td><td>5</td><td>717</td><td>83.1</td><td>4</td><td>3</td></tr>
+	<tr><td>32.1</td><td>5</td><td>1111</td><td>90.6</td><td>6</td><td>4</td></tr>
+	<tr><td>32.1</td><td>5</td><td>1668</td><td>94</td><td>6</td><td>4</td></tr>
+	<tr><td>32.1</td><td>5</td><td>3000</td><td>100</td><td>6</td><td>4</td></tr>
+	<tr><td>22.2</td><td>6</td><td>62</td><td>55.6</td><td>1</td><td>0</td></tr>
+	<tr><td>22.2</td><td>6</td><td>356</td><td>85.5</td><td>3</td><td>3</td></tr>
+	<tr><td>22.2</td><td>6</td><td>717</td><td>91.5</td><td>5</td><td>4</td></tr>
+	<tr><td>22.2</td><td>6</td><td>1111</td><td>97.2</td><td>6</td><td>4</td></tr>
+	<tr><td>22.2</td><td>6</td><td>1668</td><td>98.7</td><td>6</td><td>4</td></tr>
+	<tr><td>22.2</td><td>6</td><td>3000</td><td>100</td><td>6</td><td>4</td></tr>
+	<tr><td>20.1</td><td>7</td><td>62</td><td>31.3</td><td>0</td><td>0</td></tr>
+	<tr><td>20.1</td><td>7</td><td>356</td><td>65.9</td><td>2</td><td>2</td></tr>
+	<tr><td>20.1</td><td>7</td><td>717</td><td>85.1</td><td>3</td><td>2</td></tr>
+	<tr><td>20.1</td><td>7</td><td>1111</td><td>92.9</td><td>6</td><td>4</td></tr>
+	<tr><td>20.1</td><td>7</td><td>1668</td><td>97.2</td><td>6</td><td>4</td></tr>
+	<tr><td>20.1</td><td>7</td><td>3000</td><td>100</td><td>6</td><td>4</td></tr>
+	<tr><td>28.5</td><td>8</td><td>62</td><td>40.8</td><td>0</td><td>0</td></tr>
+	<tr><td>28.5</td><td>8</td><td>356</td><td>75.8</td><td>2</td><td>2</td></tr>
+	<tr><td>28.5</td><td>8</td><td>717</td><td>87.9</td><td>3</td><td>3</td></tr>
+	<tr><td>28.5</td><td>8</td><td>1111</td><td>94.3</td><td>5</td><td>4</td></tr>
+	<tr><td>28.5</td><td>8</td><td>1668</td><td>96.8</td><td>6</td><td>4</td></tr>
+	<tr><td>28.5</td><td>8</td><td>3000</td><td>100</td><td>6</td><td>4</td></tr>
+	</table>
+	</div><div>
+	<h4>Résultats récoltés et complétés</h4>
+	<table>
+	<tr class="tr"><td>Source</td><td>Text</td><td>Lexique</td><td>Couverture</td><td>Cadre</td></tr>
+	<tr><td>valeur récoltée</td><td>1</td><td>62</td><td>24.00</td><td>0</td></tr>
+	<tr><td>valeur récoltée</td><td>1</td><td>356</td><td>58.70</td><td>1</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>1</td><td>536.5</td><td></td><td>2</td></tr>
+	<tr><td>valeur récoltée</td><td>1</td><td>717</td><td>84.10</td><td>3</td></tr>
+	<tr><td>valeur récoltée</td><td>1</td><td>1111</td><td>91.90</td><td>4</td></tr>
+	<tr><td>valeur récoltée</td><td>1</td><td>1668</td><td>97.40</td><td>5</td></tr>
+	<tr><td>valeur récoltée</td><td>1</td><td>3000</td><td>100.00</td><td>5</td></tr>
+	<tr><td>valeur récoltée</td><td>2</td><td>62</td><td>14.00</td><td>0</td></tr>
+	<tr><td>valeur récoltée</td><td>2</td><td>356</td><td>51.10</td><td>0</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>2</td><td>536.5</td><td></td><td>1</td></tr>
+	<tr><td>valeur récoltée</td><td>2</td><td>717</td><td>78.30</td><td>2</td></tr>
+	<tr><td>valeur récoltée</td><td>2</td><td>1111</td><td>87.00</td><td>3</td></tr>
+	<tr><td>valeur récoltée</td><td>2</td><td>1668</td><td>92.90</td><td>4</td></tr>
+	<tr><td>valeur récoltée</td><td>2</td><td>3000</td><td>100.00</td><td>5</td></tr>
+	<tr><td>valeur récoltée</td><td>3</td><td>62</td><td>17.40</td><td>0</td></tr>
+	<tr><td>valeur récoltée</td><td>3</td><td>356</td><td>49.50</td><td>1</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>3</td><td>536.5</td><td></td><td>2</td></tr>
+	<tr><td>valeur récoltée</td><td>3</td><td>717</td><td>73.30</td><td>3</td></tr>
+	<tr><td>valeur récoltée</td><td>3</td><td>1111</td><td>87.30</td><td>3</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>3</td><td>1389.5</td><td></td><td>4</td></tr>
+	<tr><td>valeur récoltée</td><td>3</td><td>1668</td><td>94.30</td><td>5</td></tr>
+	<tr><td>valeur récoltée</td><td>3</td><td>3000</td><td>100.00</td><td>5</td></tr>
+	<tr><td>valeur récoltée</td><td>4</td><td>62</td><td>10.60</td><td>0</td></tr>
+	<tr><td>valeur récoltée</td><td>4</td><td>356</td><td>43.50</td><td>0</td></tr>
+	<tr><td>valeur récoltée</td><td>4</td><td>717</td><td>73.10</td><td>1</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>4</td><td>914</td><td></td><td>2</td></tr>
+	<tr><td>valeur récoltée</td><td>4</td><td>1111</td><td>88.10</td><td>3</td></tr>
+	<tr><td>valeur récoltée</td><td>4</td><td>1668</td><td>94.00</td><td>3</td></tr>
+	<tr><td>valeur récoltée</td><td>4</td><td>3000</td><td>100.00</td><td>4</td></tr>
+	<tr><td>valeur récoltée</td><td>5</td><td>62</td><td>31.90</td><td>0</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>5</td><td>209</td><td></td><td>1</td></tr>
+	<tr><td>valeur récoltée</td><td>5</td><td>356</td><td>69.10</td><td>2</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>5</td><td>536.5</td><td></td><td>3</td></tr>
+	<tr><td>valeur récoltée</td><td>5</td><td>717</td><td>83.10</td><td>4</td></tr>
+	<tr><td>valeur récoltée</td><td>5</td><td>1111</td><td>90.60</td><td>6</td></tr>
+	<tr><td>valeur récoltée</td><td>5</td><td>1668</td><td>94.00</td><td>6</td></tr>
+	<tr><td>valeur récoltée</td><td>5</td><td>3000</td><td>100.00</td><td>6</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>5</td><td>914.0001</td><td></td><td>5</td></tr>
+	<tr><td>valeur récoltée</td><td>6</td><td>62</td><td>55.60</td><td>1</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>6</td><td>209</td><td></td><td>2</td></tr>
+	<tr><td>valeur récoltée</td><td>6</td><td>356</td><td>85.50</td><td>3</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>6</td><td>536.5</td><td></td><td>4</td></tr>
+	<tr><td>valeur récoltée</td><td>6</td><td>717</td><td>91.50</td><td>5</td></tr>
+	<tr><td>valeur récoltée</td><td>6</td><td>1111</td><td>97.20</td><td>6</td></tr>
+	<tr><td>valeur récoltée</td><td>6</td><td>1668</td><td>98.70</td><td>6</td></tr>
+	<tr><td>valeur récoltée</td><td>6</td><td>3000</td><td>100.00</td><td>6</td></tr>
+	<tr><td>valeur récoltée</td><td>7</td><td>62</td><td>31.3</td><td>0</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>7</td><td>209</td><td></td><td>1</td></tr>
+	<tr><td>valeur récoltée</td><td>7</td><td>356</td><td>65.90</td><td>2</td></tr>
+	<tr><td>valeur récoltée</td><td>7</td><td>717</td><td>85.10</td><td>3</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>7</td><td>848.3333333333</td><td></td><td>4</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>7</td><td>979.6666666667</td><td></td><td>5</td></tr>
+	<tr><td>valeur récoltée</td><td>7</td><td>1111</td><td>92.90</td><td>6</td></tr>
+	<tr><td>valeur récoltée</td><td>7</td><td>1668</td><td>97.20</td><td>6</td></tr>
+	<tr><td>valeur récoltée</td><td>7</td><td>3000</td><td>100.00</td><td>6</td></tr>
+	<tr><td>valeur récoltée</td><td>8</td><td>62</td><td>40.80</td><td>0</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>8</td><td>209</td><td></td><td>1</td></tr>
+	<tr><td>valeur récoltée</td><td>8</td><td>356</td><td>75.80</td><td>2</td></tr>
+	<tr><td>valeur récoltée</td><td>8</td><td>717</td><td>87.90</td><td>3</td></tr>
+	<tr class="calculed"><td>valeur calculée</td><td>8</td><td>914</td><td></td><td>4</td></tr>
+	<tr><td>valeur récoltée</td><td>8</td><td>1111</td><td>94.30</td><td>5</td></tr>
+	<tr><td>valeur récoltée</td><td>8</td><td>1668</td><td>96.80</td><td>6</td></tr>
+	<tr><td>valeur récoltée</td><td>8</td><td>3000</td><td>100.00</td><td>6</td></tr>
+	</table>
+	</div>
+</div>
+<br />
+</body>
+</html>
+
+<script>
+// make some data
+// Texte, Lexique mental, Couverture, Longueur de phrase,Snow,CECR/DIALANG],
+//	
+var data = [
+	{ "字/phrase":27.4,	"Texte":1,	"Lexique":62,	"Couverture":24,	"Cadre":0,	"Snow":0 },
+	{ "字/phrase":27.4,	"Texte":1,	"Lexique":356,	"Couverture":58.7,	"Cadre":1,	"Snow":0 },
+	{ "字/phrase":27.4,	"Texte":1,	"Lexique":717,	"Couverture":84.1,	"Cadre":3,	"Snow":2 },
+	{ "字/phrase":27.4,	"Texte":1,	"Lexique":1111,	"Couverture":91.9,	"Cadre":4,	"Snow":3 },
+	{ "字/phrase":27.4,	"Texte":1,	"Lexique":1668,	"Couverture":97.4,	"Cadre":5,	"Snow":4 },
+	{ "字/phrase":27.4,	"Texte":1,	"Lexique":3000,	"Couverture":100,	"Cadre":5,	"Snow":4 },
+	{ "字/phrase":54.0,	"Texte":2,	"Lexique":62,	"Couverture":14,	"Cadre":0,	"Snow":0 },
+	{ "字/phrase":54.0,	"Texte":2,	"Lexique":356,	"Couverture":51.1,	"Cadre":0,	"Snow":0 },
+	{ "字/phrase":54.0,	"Texte":2,	"Lexique":717,	"Couverture":78.3,	"Cadre":2,	"Snow":2 },
+	{ "字/phrase":54.0,	"Texte":2,	"Lexique":1111,	"Couverture":87,	"Cadre":3,	"Snow":2 },
+	{ "字/phrase":54.0,	"Texte":2,	"Lexique":1668,	"Couverture":92.9,	"Cadre":4,	"Snow":3 },
+	{ "字/phrase":54.0,	"Texte":2,	"Lexique":3000,	"Couverture":100,	"Cadre":5,	"Snow":3 },
+	{ "字/phrase":38.6,	"Texte":3,	"Lexique":62,	"Couverture":17.4,	"Cadre":0,	"Snow":0 },
+	{ "字/phrase":38.6,	"Texte":3,	"Lexique":356,	"Couverture":49.5,	"Cadre":1,	"Snow":0 },
+	{ "字/phrase":38.6,	"Texte":3,	"Lexique":717,	"Couverture":73.3,	"Cadre":3,	"Snow":2 },
+	{ "字/phrase":38.6,	"Texte":3,	"Lexique":1111,	"Couverture":87.3,	"Cadre":3,	"Snow":3 },
+	{ "字/phrase":38.6,	"Texte":3,	"Lexique":1668,	"Couverture":94.3,	"Cadre":5,	"Snow":3 },
+	{ "字/phrase":38.6,	"Texte":3,	"Lexique":3000,	"Couverture":100,	"Cadre":5,	"Snow":3 },
+	{ "字/phrase":42.9,	"Texte":4,	"Lexique":62,	"Couverture":10.6,	"Cadre":0,	"Snow":0 },
+	{ "字/phrase":42.9,	"Texte":4,	"Lexique":356,	"Couverture":43.5,	"Cadre":0,	"Snow":0 },
+	{ "字/phrase":42.9,	"Texte":4,	"Lexique":717,	"Couverture":73.1,	"Cadre":1,	"Snow":1 },
+	{ "字/phrase":42.9,	"Texte":4,	"Lexique":1111,	"Couverture":88.1,	"Cadre":3,	"Snow":2 },
+	{ "字/phrase":42.9,	"Texte":4,	"Lexique":1668,	"Couverture":94,	"Cadre":3,	"Snow":3 },
+	{ "字/phrase":42.9,	"Texte":4,	"Lexique":3000,	"Couverture":100,	"Cadre":4,	"Snow":3 },
+	{ "字/phrase":32.1,	"Texte":5,	"Lexique":62,	"Couverture":31.9,	"Cadre":0,	"Snow":0 },
+	{ "字/phrase":32.1,	"Texte":5,	"Lexique":356,	"Couverture":69.1,	"Cadre":2,	"Snow":2 },
+	{ "字/phrase":32.1,	"Texte":5,	"Lexique":717,	"Couverture":83.1,	"Cadre":4,	"Snow":3 },
+	{ "字/phrase":32.1,	"Texte":5,	"Lexique":1111,	"Couverture":90.6,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":32.1,	"Texte":5,	"Lexique":1668,	"Couverture":94,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":32.1,	"Texte":5,	"Lexique":3000,	"Couverture":100,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":22.2,	"Texte":6,	"Lexique":62,	"Couverture":55.6,	"Cadre":1,	"Snow":0 },
+	{ "字/phrase":22.2,	"Texte":6,	"Lexique":356,	"Couverture":85.5,	"Cadre":3,	"Snow":3 },
+	{ "字/phrase":22.2,	"Texte":6,	"Lexique":717,	"Couverture":91.5,	"Cadre":5,	"Snow":4 },
+	{ "字/phrase":22.2,	"Texte":6,	"Lexique":1111,	"Couverture":97.2,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":22.2,	"Texte":6,	"Lexique":1668,	"Couverture":98.7,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":22.2,	"Texte":6,	"Lexique":3000,	"Couverture":100,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":20.1,	"Texte":7,	"Lexique":62,	"Couverture":31.3,	"Cadre":0,	"Snow":0 },
+	{ "字/phrase":20.1,	"Texte":7,	"Lexique":356,	"Couverture":65.9,	"Cadre":2,	"Snow":2 },
+	{ "字/phrase":20.1,	"Texte":7,	"Lexique":717,	"Couverture":85.1,	"Cadre":3,	"Snow":2 },
+	{ "字/phrase":20.1,	"Texte":7,	"Lexique":1111,	"Couverture":92.9,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":20.1,	"Texte":7,	"Lexique":1668,	"Couverture":97.2,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":20.1,	"Texte":7,	"Lexique":3000,	"Couverture":100,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":28.5,	"Texte":8,	"Lexique":62,	"Couverture":40.8,	"Cadre":0,	"Snow":0 },
+	{ "字/phrase":28.5,	"Texte":8,	"Lexique":356,	"Couverture":75.8,	"Cadre":2,	"Snow":2 },
+	{ "字/phrase":28.5,	"Texte":8,	"Lexique":717,	"Couverture":87.9,	"Cadre":3,	"Snow":3 },
+	{ "字/phrase":28.5,	"Texte":8,	"Lexique":1111,	"Couverture":94.3,	"Cadre":5,	"Snow":4 },
+	{ "字/phrase":28.5,	"Texte":8,	"Lexique":1668,	"Couverture":96.8,	"Cadre":6,	"Snow":4 },
+	{ "字/phrase":28.5,	"Texte":8,	"Lexique":3000,	"Couverture":100,	"Cadre":6,	"Snow":4 }
+];
+
+var color = d3.scale.linear()
+    .domain([0, 6])
+    .range(["steelblue", "chocolate"])
+    .interpolate(d3.interpolateLab);
+
+// create a parallel coordinates plot
+ var pc_simple = d3.parcoords()("#exemple0")
+   .data(data)
+   .color(function(d) { return color(d['Cadre']); })
+   .alpha(0.6)
+   .margin({ top: 40, left: 10, bottom: 22, right: 0 })
+   .render()
+   .createAxes()
+   .brushable()
+   .reorderable();
+
+/*
+var pc_simple = d3.parcoords()("#example")
+  .dimensions(data2)		// THIS LINE : 1. DO ADD DIMENSIONS ; 2. BROKE THE ||-COORDS
+  .data(data)
+  .render()
+  .createAxes();
+*/
+
+// LEFT COL
+// create a parallel coordinates plot
+ var pc_simple = d3.parcoords()("#example1")
+   .data(data)
+   .color(function(d) { return color(d['Cadre']); })
+   .alpha(0.6)
+   .margin({ top: 40, left: 10, bottom: 22, right: 0 })
+   .render()
+   .createAxes()
+   .brushable()
+   .reorderable();
+ var pc_simple = d3.parcoords()("#example2")
+   .data(data)
+   .color(function(d) { return color(d['Cadre']); })
+   .alpha(0.6)
+   .margin({ top: 40, left: 10, bottom: 22, right: 0 })
+   .render()
+   .createAxes()
+   .brushable()
+   .reorderable();
+ var pc_simple = d3.parcoords()("#example3")
+   .data(data)
+   .color(function(d) { return color(d['Cadre']); })
+   .alpha(0.6)
+   .margin({ top: 40, left: 10, bottom: 22, right: 0 })
+   .render()
+   .createAxes()
+   .brushable()
+   .reorderable();
+ var pc_simple = d3.parcoords()("#example4")
+   .data(data)
+   .color(function(d) { return color(d['Cadre']); })
+   .alpha(0.6)
+   .margin({ top: 40, left: 10, bottom: 22, right: 0 })
+   .render()
+   .createAxes()
+   .brushable()
+   .reorderable();
+// RIGHT COL
+// create a parallel coordinates plot
+ var pc_simple = d3.parcoords()("#exemple1")
+   .data(data)
+   .color(function(d) { return color(d['Cadre']); })
+   .alpha(0.6)
+   .margin({ top: 40, left: 10, bottom: 22, right: 0 })
+   .render()
+   .createAxes()
+   .brushable()
+   .reorderable();
+ var pc_simple = d3.parcoords()("#exemple2")
+   .data(data)
+   .color(function(d) { return color(d['Cadre']); })
+   .alpha(0.6)
+   .margin({ top: 40, left: 10, bottom: 22, right: 0 })
+   .render()
+   .createAxes()
+   .brushable()
+   .reorderable();
+ var pc_simple = d3.parcoords()("#exemple3")
+   .data(data)
+   .color(function(d) { return color(d['Cadre']); })
+   .alpha(0.6)
+   .margin({ top: 40, left: 10, bottom: 22, right: 0 })
+   .render()
+   .createAxes()
+   .brushable()
+   .reorderable();
+ var pc_simple = d3.parcoords()("#exemple4")
+   .data(data)
+   .color(function(d) { return color(d['Cadre']); })
+   .alpha(0.6)
+   .margin({ top: 40, left: 10, bottom: 22, right: 0 })
+   .render()
+   .createAxes()
+   .brushable()
+   .reorderable();
+
+</script>

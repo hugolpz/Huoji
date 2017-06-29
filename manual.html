@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)chrome-extension://mgijmajocgfcbeboacabfgobmjgjcoja/options.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Huoji&gt; Manual.html</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+<!-- offline JS mine --><script type="text/javascript" src="js/forms.js"></script>
+<!-- offline JS mine --><script type="text/javascript" src="js/CSSswitch.js"></script>
+
+<style id="readingtypeCSS"></style>
+</head>
+<body>
+	<ul class="navbar">
+				<li><a href="popup.html">Apps</a></li>
+				<li><a href="options.html">Options</a></li>
+				<li><a href="manual.html">Manual</a></li>
+				<li><a href="references.html">References</a></li>
+	</ul>
+<div id="content">
+	<div id="title">
+		<img src="火128.png" title="Huoji" alt="Huoji: Chinese Texts Analyser">
+		<div>Extension Manual</div>
+	</div>
+	<form id="optform" name="optform" action="">
+
+
+		<div class="option_row">
+			<div class="option_name">Symbology:</div>
+			<div class="option_value">
+				<div class="option_value_primary" style="font:10px verdana;">
+					<div class="option_value" onclick="CSSswitch();CSSupdate();">
+						<div id="logo" width="64px" height="64px" border="0"></div>
+						<center>Click me.</center>
+					</div>
+					<div class="option_value">
+						<hr>
+						<easy>  ■:easy for me</easy><br />
+						<part>  ■:unclear if≥</part><text id="thresholdoneLG">thresold 1</text>th<br>
+						<news>  ■:unknow, if≥</news><text id="thresholdtwoLG">thresold 2</text>th<br />
+						<sign>(■:alphanumerics)</sign><br />
+						<nojs>(■:>3000 or not in dataset)</nojs><br />
+						<hr style="margin-top:0px;">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="option_row">
+			<div class="option_name">Apps manual:</div>
+			<div class="option_value">
+				<div class="option_value_primary">
+				<def>Initialization:</def><br/>
+				1. In page <a href="options.html">Options</a>, set your settings. Click <def>"Save"</def> <big>⚠</big>.<br/>
+				<def>Text input, setting, analysis & augmentation:</def><br/>
+				2. Go to <a href="popup.html">Apps</a><br/>
+				3. Past your chinese text in the <def>"Input box"</def> (bottom left)<br/>
+				4. (if need: change settings, click <def>"Save"</def>)<br/>
+				5. Click <def>"Run"</def>.<br/>
+				<def>Refresh statistics:</def><br/>
+				6. Click <def>"Update"</def> (each time)<br/>
+				</div>
+			</div>
+		</div>
+
+		<div class="option_row">
+			<div class="option_name">Recommended complementary tools:</div>
+			<div class="option_value">
+				<div class="option_value_primary">
+				<li><def>Popup dictionary:</def> <a title="Chinese popup translator. Turn on, overfly Chinese words, get the pinyin and English translation." href="https://chrome.google.com/webstore/detail/hlcddplhfenagbaipfjhhcjmebhkkaif?hl=en-US">Chinese Pera popup</a> (+) or <a title="Chinese popup translator. Turn on, overfly Chinese words, get the pinyin and English translation. Supports adding words to Skritter." href="https://chrome.google.com/webstore/detail/kkmlkkjojmombglmlpbpapmhcaljjkde?hl=en-US">Zhongwen popup</a>
+				<li><def>Simp/Trad converter:</def> <a title="Automatically switch from Simplified Chinese to Traditional Chinese or reversal." href="https://chrome.google.com/webstore/detail/oljejbejachaajllbbjiamdkhipbbppk?hl=en-US">NJStar Chinese Converter</a>.
+				</div>
+			</div>
+		</div>
+
+		<div class="buttons"> </div>
+	</form>
+	</div>
+<div class="footer" style="float:center;">©<a href="http://fr.wikipedia.org/wiki/Special:EmailUser/Yug" style="color:#333;">Hugo Lopez</a> (<a href="http://www.inalco.fr" style="color:#333;">INALCO</a>) — 2012 — <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/"  style="color:#333;">CC-by-nc-sa <img alt="CC" src="CC.png" width="50"></a></div>
+</body></html>
