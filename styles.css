@@ -62,7 +62,7 @@ easy { color: black; }
 part { color: chocolate; }
 news { color: red; }
 div#logo { /*Not need ?*/
-  background-image: url(火64.png);
+  background-image: url('火64.png');
   background-repeat: no-repeat;
   width: 60px;
   height: 60px;
